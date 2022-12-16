@@ -755,6 +755,10 @@ function createLayout(graph, physicsSettings) {
   listenToEvents();
 
   var wasStable = false;
+  var movementData = {
+    bodiesCount: 0,
+    stepsList: [],
+  };
 
   var api = {
     /**
@@ -764,8 +768,8 @@ function createLayout(graph, physicsSettings) {
      * The system is stable if no further call to `step()` can improve the layout.
      */
     step: function() {
-        console.log("change test")
       if (bodiesCount === 0) return true; // TODO: This will never fire 'stable'
+      movementData.bodiesCount = bodiesCount
 
       var lastMove = physicsSimulator.step();
 
@@ -778,6 +782,9 @@ function createLayout(graph, physicsSettings) {
 
       var ratio = lastMove/bodiesCount;
       var isStableNow = ratio <= 0.01; // TODO: The number is somewhat arbitrary...
+      movementData.stepsList.push({ ratio, lastMove })
+
+      if(!isStableNow) console.log(movementData);
 
       if (wasStable !== isStableNow) {
         wasStable = isStableNow;
