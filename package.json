@@ -37,7 +37,7 @@
     "gintersect": "0.1.0",
     "ngraph.centrality": "0.3.0",
     "ngraph.events": "0.0.3",
-    "ngraph.forcelayout": "github:Deaponn/ngraph.forcelayout#node-activity-raport",
+    "ngraph.forcelayout": "github:Deaponn/ngraph.forcelayout",
     "ngraph.fromjson": "0.1.9",
     "ngraph.generators": "0.0.19",
     "ngraph.graph": "0.0.14",
